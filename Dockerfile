@@ -9,6 +9,7 @@ RUN apt-get update && \
 	python3 /tmp/get-pip.py && \
 	pip install -U pip && \
 	pip install ansible pywinrm && \
+	apt-get install -y sshpass && \
 	mkdir /var/ansible
 VOLUME /var/ansible
 USER jenkins
