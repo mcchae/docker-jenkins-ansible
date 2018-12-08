@@ -23,6 +23,9 @@ VOLUME /var/ansible
 USER jenkins
 ```
 
+* ansible을 이용할 때 ssh 암호를 이용하려면 sshpass 패키지 필요
+
+
 ### Jenkins
 * 버전 2.154
 
@@ -76,3 +79,4 @@ services:
 ```
 
 > mailhog 이미지는 jenkins에서 메일을 보내기 위한 컨테이너인데 테스트를 해 보니 제대로 나가지 않아 제외하고 gmail을 이용하여 보내고 있음
+
