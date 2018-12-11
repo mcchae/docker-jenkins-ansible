@@ -10,6 +10,7 @@ FROM jenkinsci/jenkins:2.154
 MAINTAINER MoonChang Chae mcchae@argos-labs.com
 LABEL Description="Jenkins 2.154 with python3 ansible"
 
+ENV ANSIBLE_STDOUT_CALLBACK=debug
 USER root
 COPY get-pip.py /tmp
 RUN apt-get update && \
@@ -21,7 +22,6 @@ RUN apt-get update && \
         mkdir /var/ansible
 VOLUME /var/ansible
 USER jenkins
-ENV ANSIBLE_STDOUT_CALLBACK=debug
 ```
 
 * ansible을 이용할 때 ssh 암호를 이용하려면 sshpass 패키지 필요
