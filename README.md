@@ -21,9 +21,11 @@ RUN apt-get update && \
         mkdir /var/ansible
 VOLUME /var/ansible
 USER jenkins
+ENV ANSIBLE_STDOUT_CALLBACK=debug
 ```
 
 * ansible을 이용할 때 ssh 암호를 이용하려면 sshpass 패키지 필요
+* ANSIBLE_STDOUT_CALLBACK=debug 환경변수를 지정하면 stdout/stderr 이 그대로의 읽기 쉬운 결과를 보여줌
 
 
 ### Jenkins
