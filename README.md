@@ -10,6 +10,7 @@ FROM jenkinsci/jenkins:2.154
 MAINTAINER MoonChang Chae mcchae@argos-labs.com
 LABEL Description="Jenkins 2.154 with python3 ansible"
 
+ENV TZ=Asia/Seoul
 ENV ANSIBLE_STDOUT_CALLBACK=debug
 USER root
 COPY get-pip.py /tmp
@@ -24,6 +25,7 @@ VOLUME /var/ansible
 USER jenkins
 ```
 
+* KST로 TimeZone 설정 (Asia/Seoul)
 * ansible을 이용할 때 ssh 암호를 이용하려면 sshpass 패키지 필요
 * ANSIBLE_STDOUT_CALLBACK=debug 환경변수를 지정하면 stdout/stderr 이 그대로의 읽기 쉬운 결과를 보여줌
 
