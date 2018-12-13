@@ -10,7 +10,7 @@ RUN apt-get update && \
 	apt-get install -y python3 && \
 	python3 /tmp/get-pip.py && \
 	pip install -U pip && \
-	pip install ansible pywinrm && \
+	pip install ansible pywinrm PyVmomi && \
 	apt-get install -y sshpass && \
 	mkdir /var/ansible
 VOLUME /var/ansible
