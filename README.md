@@ -15,12 +15,15 @@ ENV ANSIBLE_STDOUT_CALLBACK=debug
 USER root
 COPY get-pip.py /tmp
 RUN apt-get update && \
-        apt-get install -y python3 && \
-        python3 /tmp/get-pip.py && \
-        pip install -U pip && \
-        pip install ansible pywinrm PyVmomi && \
-        apt-get install -y sshpass && \
-        mkdir /var/ansible
+	apt-get install -y software-properties-common && \
+	sudo add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y python3.6 && \
+    python3 /tmp/get-pip.py && \
+    pip install -U pip && \
+    pip install ansible pywinrm PyVmomi && \
+    apt-get install -y sshpass && \
+    mkdir /var/ansible
 VOLUME /var/ansible
 USER jenkins
 ```
@@ -30,6 +33,12 @@ USER jenkins
 * ANSIBLE_STDOUT_CALLBACK=debug 환경변수를 지정하면 stdout/stderr 이 그대로의 읽기 쉬운 결과를 보여줌
 * ansible에 윈도우 연결을 위해 pywinrm 패키지 필요
 * ansible에 ESXi 서버 핸들링을 위해 PyVmomi 패키지 필요
+* 디폴트로 설치되는 python 3.5.3 은 아래와 같은 오류를 발생하므로 파이썬 3.6으로 올림
+
+> TypeError: 'NoneType' object is not callable
+> Exception ignored in: <function WeakValueDictionary.__init__.<locals>.remove at 0x7f6254a86840>
+> Traceback (most recent call last):
+>   File "/usr/lib/python3.5/weakref.py", line 117, in remove
 
 
 ### Jenkins
