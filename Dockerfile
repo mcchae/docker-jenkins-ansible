@@ -108,10 +108,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& cd .. \
 	&& rm -rf s3fs-fuse \
     && rm -rf /var/lib/apt/lists/* \
-	&& mkdir /var/s3fs
-RUN apt-get update && apt-get install -y sudo \
-	&& echo "root:r" | chpasswd && adduser jenkins sudo \
-	&& rm -rf /var/lib/apt/lists/*
+	&& mkdir /var/s3fs && chown -R jenkins:jenkins /var/s3fs
 
 VOLUME /var/ansible
 VOLUME /var/s3fs
