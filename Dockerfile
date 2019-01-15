@@ -96,21 +96,21 @@ RUN pip install -U pip && \
 	apt-get install -y sshpass && \
 	mkdir /var/ansible
 
-# for s3fs (AWS S3 filesystem)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-		automake autotools-dev fuse g++ git libcurl4-gnutls-dev libfuse-dev libssl-dev libxml2-dev make pkg-config \
-	&& git clone https://github.com/s3fs-fuse/s3fs-fuse.git \
-	&& cd s3fs-fuse \
-	&& ./autogen.sh \
-	&& ./configure --prefix=/usr --with-openssl \
-	&& make \
-	&& make install \
-	&& cd .. \
-	&& rm -rf s3fs-fuse \
-    && rm -rf /var/lib/apt/lists/* \
-	&& mkdir /var/s3fs
+## for s3fs (AWS S3 filesystem)
+#RUN apt-get update && apt-get install -y --no-install-recommends \
+#		automake autotools-dev fuse g++ git libcurl4-gnutls-dev libfuse-dev libssl-dev libxml2-dev make pkg-config \
+#	&& git clone https://github.com/s3fs-fuse/s3fs-fuse.git \
+#	&& cd s3fs-fuse \
+#	&& ./autogen.sh \
+#	&& ./configure --prefix=/usr --with-openssl \
+#	&& make \
+#	&& make install \
+#	&& cd .. \
+#	&& rm -rf s3fs-fuse \
+#    && rm -rf /var/lib/apt/lists/* \
+#	&& mkdir /var/s3fs
 
 VOLUME /var/ansible
-VOLUME /var/s3fs
+#VOLUME /var/s3fs
 USER jenkins
 
