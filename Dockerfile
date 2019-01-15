@@ -109,8 +109,9 @@ RUN pip install -U pip && \
 #	&& rm -rf s3fs-fuse \
 #    && rm -rf /var/lib/apt/lists/* \
 #	&& mkdir /var/s3fs
+RUN mkdir /var/s3fs
 
 VOLUME /var/ansible
-#VOLUME /var/s3fs
+VOLUME /var/s3fs
 USER jenkins
 
