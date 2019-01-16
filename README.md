@@ -99,13 +99,17 @@ RUN set -ex; \
 
 
 RUN pip install -U pip && \
+	# for ansible
 	pip install ansible pywinrm PyVmomi && \
+	# for AWS S3
+	pip install awscli boto  && \
 	apt-get update && \
 	apt-get install -y sshpass && \
 	mkdir /var/ansible
 
 VOLUME /var/ansible
 USER jenkins
+
 ```
 
 * KST로 TimeZone 설정 (Asia/Seoul)
@@ -132,6 +136,10 @@ USER jenkins
 
 ##### Ansible
 * 앤시블 버전 2.7.4
+
+##### AWS & S3
+* using awscli
+* S3 using boto
 
 ## 사용 예
 
