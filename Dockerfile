@@ -97,8 +97,13 @@ RUN pip install -U pip && \
 	pip install awscli boto  && \
 	apt-get update && \
 	apt-get install -y sshpass && \
-	mkdir /var/ansible
+	mkdir /var/ansible && \
+	mkdir /var/s3pkg && \
+	mkdir /var/s3update
 
 VOLUME /var/ansible
+VOLUME /var/s3pkg
+VOLUME /var/s3update
+
 USER jenkins
 
