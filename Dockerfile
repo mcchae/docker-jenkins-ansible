@@ -94,9 +94,10 @@ RUN pip install -U pip && \
 	# for ansible
 	pip install ansible pywinrm PyVmomi && \
 	# for AWS S3
-	pip install awscli boto  && \
+	pip install awscli boto boto3 && \
 	apt-get update && \
 	apt-get install -y sshpass && \
+	apt-get install -y jq && \
 	mkdir /var/ansible && \
 	mkdir /var/s3pkg && \
 	mkdir /var/s3update
